@@ -37,6 +37,7 @@ const consultarCodigo = async (req,res) => {
         }
 
         cliente.cpf = cryptoJS.AES.decrypt(cliente.cpf, CHAVE_SECRETA).toString(cryptoJS.enc.Utf8)
+        cliente.senha = null
 
         res.status(200).json(cliente)
     }catch(err){
@@ -56,6 +57,7 @@ const consultarNome = async (req,res) => {
         }
 
         cliente.cpf = cryptoJS.AES.decrypt(cliente.cpf, CHAVE_SECRETA).toString(cryptoJS.enc.Utf8)
+        cliente.senha = null
 
         res.status(200).json(cliente)
     }catch(err){
@@ -70,6 +72,7 @@ const listar = async (req,res) => {
 
         clientes.forEach(el => {
             el.cpf = cryptoJS.AES.decrypt(el.cpf, CHAVE_SECRETA).toString(cryptoJS.enc.Utf8)
+            el.senha = null
         })
 
         res.status(200).json(clientes)
