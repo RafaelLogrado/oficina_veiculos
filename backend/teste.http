@@ -1,0 +1,245 @@
+################
+### 1. Teste de aplicação rodando
+################
+GET http://localhost:3000
+Accept: application/json
+
+
+################
+### 2. Teste de cadastro de cliente
+################
+
+### 2.1 Cadastro 1
+POST http://localhost:3000/cliente 
+Content-Type: application/json
+
+{
+    "nome": "Rafael",
+    "email": "rafael@gmail.com",
+    "senha": "abc",
+    "cpf": "12345678912",
+    "endereco": "rua xyz",
+    "telefone": "48996054892"
+}
+
+### 2.2 Cadastro 2
+POST http://localhost:3000/cliente 
+Content-Type: application/json
+
+{
+    "nome": "José",
+    "email": "jose@gmail.com",
+    "senha": "cba",
+    "cpf": "49586710123",
+    "endereco": "rua abc",
+    "telefone": "48996045982"
+}
+
+
+################
+### 3. Teste de login
+################
+# @name loginReq
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "rafael@gmail.com",
+    "senha": "abc"
+}
+
+
+################
+### 4. Teste de listagem de clientes
+################
+GET http://localhost:3000/clientes
+Content-Type: application/json
+Authorization: {{loginReq.response.body.token}}
+
+
+################
+### 5. Teste de consulta de clientes
+################
+
+### 5.1 Consulta por código 1 (Rafael)
+GET http://localhost:3000/cliente/1
+Content-Type: application/json
+Authorization: {{loginReq.response.body.token}}
+
+### 5.2 Consulta por nome (Rafael)
+GET http://localhost:3000/cliente/buscarNome/Rafael
+Content-Type: application/json
+Authorization: {{loginReq.response.body.token}}
+
+
+################
+### 6. Teste de atualização de clientes
+################
+
+### 6.1 Atualizar email do Rafael
+PUT http://localhost:3000/cliente/1
+Content-Type: application/json
+Authorization: {{loginReq.response.body.token}}
+
+{
+    "nome": "Rafael",
+    "email": "rafaelnovo@gmail.com",
+    "senha": "abc",
+    "cpf": "12345678912",
+    "endereco": "rua xyz",
+    "telefone": "48996054892"
+}
+
+
+################
+### 7. Teste de apagar clientes
+################
+
+### 7.1 Apagar usuário de código 2 (José)
+DELETE http://localhost:3000/cliente/2 
+Content-Type: application/json
+Authorization: {{loginReq.response.body.token}}
+
+
+
+###########################################
+### Teste de veículos
+###########################################
+
+
+################
+### 1. Teste de cadastro de veiculo
+################
+
+### 1.1 Cadastro 1
+POST http://localhost:3000/veiculo 
+Content-Type: application/json
+Authorization: {{loginReq.response.body.token}}
+
+{
+    "modelo": "modelo 1",
+    "marca": "gagaga",
+    "placa": "abc",
+    "codRastreador": "12345678912",
+    "codCliente": "1"
+}
+
+### 1.2 Cadastro 2
+POST http://localhost:3000/veiculo 
+Content-Type: application/json
+Authorization: {{loginReq.response.body.token}}
+
+{
+    "modelo": "modelo 2",
+    "marca": "yokuza",
+    "placa": "CEC-1L14",
+    "codRastreador": "10293847123",
+    "codCliente": "3"
+}
+
+
+################
+### 2. Teste de listagem de veiculos
+################
+GET http://localhost:3000/veiculos
+Content-Type: application/json
+Authorization: {{loginReq.response.body.token}}
+
+
+################
+### 3. Teste de consulta de veiculos
+################
+
+### 3.1 Consulta por código 1 (gagaga)
+GET http://localhost:3000/veiculo/1
+Content-Type: application/json
+Authorization: {{loginReq.response.body.token}}
+
+
+################
+### 4. Teste de atualização de veiculos
+################
+
+### 4.1 Atualizar placa do veiculo 1
+PUT http://localhost:3000/veiculo/1
+Content-Type: application/json
+Authorization: {{loginReq.response.body.token}}
+
+{
+    "modelo": "modelo 1",
+    "marca": "gagaga",
+    "placa": "ABC-1D23",
+    "codRastreador": "12345678912",
+    "codCliente": "1"
+}
+
+
+################
+### 5. Teste de apagar veiculo
+################
+
+### 5.1 Apagar usuário de código 2 (yokuza)
+DELETE http://localhost:3000/veiculo/2 
+Content-Type: application/json
+Authorization: {{loginReq.response.body.token}}
+
+
+
+###########################################
+### Teste de agendamentos
+###########################################
+
+
+################
+### 1. Teste de cadastro de agendamento
+################
+
+### 1.1 Cadastro 1
+POST http://localhost:3000/agendamento 
+Content-Type: application/json
+Authorization: {{loginReq.response.body.token}}
+
+{
+    "data": "2026-10-25",
+    "hora": "12:45:00",
+    "tipo": "MANUTENCAO",
+    "codVeiculo": "1",
+    "codCliente": "1"
+}
+
+
+################
+### 2. Teste de listagem de agendamentos
+################
+GET http://localhost:3000/agendamentos
+Content-Type: application/json
+Authorization: {{loginReq.response.body.token}}
+
+
+################
+### 3. Teste de consulta de agendamento
+################
+
+### 3.1 Consulta por código 1
+GET http://localhost:3000/agendamento/1
+Content-Type: application/json
+Authorization: {{loginReq.response.body.token}}
+
+
+################
+### 4. Teste de atualização de veiculos
+################
+
+### 4.1 Atualizar horário do agendamento 1
+PUT http://localhost:3000/agendamento/1
+Content-Type: application/json
+Authorization: {{loginReq.response.body.token}}
+
+{
+  "codAgendamento": "1",
+  "data": "2026-10-25",
+  "hora": "16:25:00",
+  "tipo": "MANUTENCAO",
+  "codVeiculo": "1",
+  "codCliente": "1"
+}

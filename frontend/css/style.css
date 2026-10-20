@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    text-align: center;
+    font-size: 1.2rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1{
+    margin-bottom: 40px;
+}
+
+/**** NAVEGAÇÃO ****/
+nav{
+    margin-top: 20px;
+}
+
+a{
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+}
+
+a:hover{
+    background-color: rgb(219, 219, 219);
+}
+
+.titulo_menu{
+    color: blue;
+}
+
+
+/**** CADASTRO ****/
+input, button{
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 1.1rem;
+}
