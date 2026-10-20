@@ -23,6 +23,7 @@ btn_logar.addEventListener('click', (e) => {
         document.querySelector('form').reset()
         localStorage.setItem('token', dados.token)
         localStorage.setItem('nome', dados.nome)
+        location.href = '../index.html'
     })
     .catch((err) => {
         console.error("Erro ao tentar conectar", err)

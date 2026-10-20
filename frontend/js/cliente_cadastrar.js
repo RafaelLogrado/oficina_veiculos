@@ -29,7 +29,6 @@ btn_cadastrar.addEventListener('click', (e) => {
     .then((dados) => {
         resposta.innerHTML = dados.message
         document.querySelector('form').reset()
-        location.href = '../index.html'
     })
     .catch((err) => {
         console.error("Erro ao tentar conectar", err)

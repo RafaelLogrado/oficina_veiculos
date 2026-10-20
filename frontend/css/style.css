@@ -40,3 +40,23 @@ input, button{
     margin-top: 8px;
     font-size: 1.1rem;
 }
+
+
+/**** TABELA ****/
+table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    font-family: 'Segoe UI';
+}
+
+th{
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+th, td, th {
+    border: 2px solid rgb(70, 70, 70);
+    padding: 10px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+}
